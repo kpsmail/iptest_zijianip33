@@ -82,13 +82,13 @@ for url, shortname in sources.items():
 with open('ip.txt', 'w') as f4:
     f4.write(f"1.1.1.1:443#采集时间{now_str}\n")
     for ip in sorted(ipv4_dict):
-        f4.write(f"{ip}#{ipv4_dict[ip]}\n")
+        f4.write(f"{ip}#{ipv4_dict[ip]}CF优选IPv4-443\n")
 
 # 写入 ipv6.txt（仅IPv6）
 with open('ipv6.txt', 'w') as f6:
     f6.write(f"1.0.0.1:443#采集时间{now_str}\n")
     for ip in sorted(ipv6_dict):
-        f6.write(f"{ip}#{ipv6_dict[ip]}\n")
+        f6.write(f"{ip}#{ipv6_dict[ip]}CF优选IPv6-443\n")
 
 print(f"✅ IPv4 写入 ip.txt，共 {len(ipv4_dict)} 个")
 print(f"✅ IPv6 写入 ipv6.txt，共 {len(ipv6_dict)} 个")
