@@ -58,7 +58,7 @@ for url, shortname in sources.items():
             try:
                 if ipaddress.ip_address(ip).version == 4:
                     ip_with_port = f"{ip}:{PORT}"
-                    comment = f"{shortname}-{timestamp}"
+                    comment = f"IPv4优选{shortname}-{timestamp}"
                     ipv4_dict[ip_with_port] = comment
             except ValueError:
                 continue
@@ -69,7 +69,7 @@ for url, shortname in sources.items():
                 ip_obj = ipaddress.ip_address(ip)
                 if ip_obj.version == 6:
                     ip_with_port = f"[{ip_obj.compressed}]:{PORT}"
-                    comment = f"IPv6{shortname}-{timestamp}"
+                    comment = f"IPv6优选{shortname}-{timestamp}"
                     ipv6_dict[ip_with_port] = comment
             except ValueError:
                 continue
@@ -83,13 +83,13 @@ for url, shortname in sources.items():
 with open('ip.txt', 'w') as f4:
     f4.write(f"1.1.1.1:443#采集时间{now_str}\n")
     for ip in sorted(ipv4_dict):
-        f4.write(f"{ip}#{ipv4_dict[ip]}CF优选IPv4-{PORT}\n")
+        f4.write(f"{ip}#{ipv4_dict[ip]}\n")
 
 # 写入 ipv6.txt（仅IPv6）
 with open('ipv6.txt', 'w') as f6:
     f6.write(f"1.0.0.1:443#采集时间{now_str}\n")
     for ip in sorted(ipv6_dict):
-        f6.write(f"{ip}#{ipv6_dict[ip]}CF优选IPv6-{PORT}\n")
+        f6.write(f"{ip}#{ipv6_dict[ip]}\n")
 
 print(f"✅ IPv4 写入 ip.txt，共 {len(ipv4_dict)} 个")
 print(f"✅ IPv6 写入 ipv6.txt，共 {len(ipv6_dict)} 个")
