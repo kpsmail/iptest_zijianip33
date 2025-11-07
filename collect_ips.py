@@ -14,7 +14,7 @@ sources = {
     'https://www.wetest.vip/page/cloudflare/address_v6.html': 'wetestV6'
 }
 
-PORT = '443'  # 目标端口号
+PORT = '8443'  # 目标端口号
 
 # 正则表达式
 ipv4_pattern = r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b'
